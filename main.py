@@ -37,5 +37,9 @@ data.reset_index(drop=True) #Resetting the indices
 data['chol'].replace(0, np.nan, inplace=True)
 data['chol'].fillna(data['chol'].median(), inplace=True)
 
-classes = data.iloc[:, data.shape[1]-1]
+classes = data.iloc[:, data.shape[1]-1] 
 value = np.unique(classes)
+
+for u in value:
+    p = sum(classes == u)/len(classes)
+    print('Appearance of class', str(u), 'in [%]', p*100) #Printing the percent of healthy and ill patients
